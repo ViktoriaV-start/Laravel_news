@@ -1,0 +1,81 @@
+version: '3'
+
+networks:
+  sakura-network:
+    driver: bridge
+
+services:
+
+        sakura:
+            build:
+                context: ./php-fpm
+                args:
+                    - timezone=${TZ}
+            networks:
+                - sakura-network
+            volumes:
+                - ./../sakura:/sakura:rw,cached
+                - sakura_log:/sakura/var/log
+            env_file:
+                - .env
+            depends_on:
+                - redis
+                - memcached
+                - mariadb
+
+        nginx:
+            container_name: nginx
+            build:
+                context: ./nginx
+                args:
+                    - timezone=${TZ}
+            ports:
+                - "81:80"
+                - "443:443"
+            networks:
+                - sakura-network
+            depends_on:
+                - sakura
+            volumes:
+                - ./../sakura/public:/sakura/public
+                - ./nginx/ssl:/etc/nginx/ssl
+                - ./nginx/conf.d:/etc/nginx/conf.d
+                - ./nginx/nginx_log:/var/log/nginx
+                - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            env_file:
+                - .env
+            command: /bin/bash -c "exec nginx -g 'daemon off;'"
+
+        redis:
+            container_name: redis
+            image: redis:latest
+            ports:
+                - "6379:6379"
+            networks:
+                - sakura-network
+
+        memcached:
+            container_name: memcached
+            image: memcached:latest
+            ports:
+                    - "11211:11211"
+            networks:
+                - sakura-network
+
+        mariadb:
+            container_name: mariadb
+            image: mariadb:latest
+            env_file:
+                - ./maria/master/.env.master
+            ports:
+                - "3307:3306"
+            volumes:
+                - ./maria/master/.data/mysql:/var/lib/mysql:rw
+            networks:
+                - sakura-network
+
+volumes:
+    nginx_log:
+    sakura_log:
+    db:
+        driver: local

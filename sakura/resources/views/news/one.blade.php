@@ -15,6 +15,7 @@
 
             <img class="img-responsive img-circle img-left"
                  src="{{ url($news->image ?? '') }}" alt="photo">
+
             <p class="h5 news-text">{!!  $news->text ?? "" !!}</p>
             <p>{!!  $news->created_at ?? "" !!}</p>
         @else

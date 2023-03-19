@@ -23,7 +23,6 @@
         @csrf
 
         <div class="form-group row mb-3">
-
             <label for="title" class="col-md-2 col-form-label text-md-end">Заголовок</label>
             <div class="col-md-8">
                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" autofocus>
@@ -37,7 +36,6 @@
                     @endforeach
                 </div>
             @endif
-
         </div>
 
         <div class="form-group row mb-3">
@@ -145,7 +143,6 @@
                     <button type="submit" class="btn btn-sm btn-outline-secondary btn-colored shadow-sm">Добавить новость</button>
                 </div>
             </div>
-
         </div>
 
     </form>

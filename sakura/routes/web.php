@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ParserController;
 use \App\Http\Controllers\ProfileController;
 
 use \App\Http\Controllers\test\TestConroller;
-
+use App\Http\Controllers\Auth\VerificationController;
 
 
 /*

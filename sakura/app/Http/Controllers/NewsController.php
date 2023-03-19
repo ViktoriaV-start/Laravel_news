@@ -29,6 +29,7 @@ class NewsController extends Controller
 //                'news' => $news
 //            ]);
 
+
         if ($news) {
             return view('news.one', [
                 'news' => $news

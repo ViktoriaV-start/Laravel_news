@@ -47,14 +47,17 @@ class NewsController extends Controller
 
         $url = null;
         if ($request->file('image')) {
+
             $path = Storage::putFile('public/img', $request->file('image'));
             $url = Storage::url($path);
-            dump($path);
-            dump($url);
+
         }
 
+        $news->fill($request->all());
         $news->image = $url;
-        $saveStatus = $news->fill($request->all())->save();
+
+       // $saveStatus = $news->fill($request->all())->save();
+        $saveStatus = $news->save();
 
         if ($saveStatus) {
             return redirect()->route('news.one', $news->id)->with('success', 'Новость успешно добавлена');

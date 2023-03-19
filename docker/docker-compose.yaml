@@ -38,6 +38,8 @@ services:
                 - sakura
             volumes:
                 - ./../sakura/public:/sakura/public
+                - ./../sakura:/var/www/html
+                - ./../sakura/storage/app/public:/var/www/html/public/storage
                 - ./nginx/ssl:/etc/nginx/ssl
                 - ./nginx/conf.d:/etc/nginx/conf.d
                 - ./nginx/nginx_log:/var/log/nginx

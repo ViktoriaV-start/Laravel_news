@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <script src="{{ asset('js/dashboard.js') }}"></script>
+{{--        <script src="{{ asset('js/dashboard.js') }}"></script>--}}
         @stack('js')
     </body>
 </html>

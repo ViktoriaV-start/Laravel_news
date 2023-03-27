@@ -7,31 +7,31 @@
         <a class="p-2 text-decoration-none link-secondary {{ request()->routeIs('news.index')?'font-colored':'' }}" href="{{ route('news.index') }}"><span class="font-nav">Лента новостей</span></a>
 
         <a class="p-2 text-decoration-none link-secondary
-        {{ request()->getRequestUri() == '/news/category/world'?'font-colored':'' }}"
+        {{ request()->path() == 'news/category/world'?'font-colored':'' }}"
         href="{{ route('news.category.show', 'world') }}">
             <span class="font-nav">Мир</span>
         </a>
 
         <a class="p-2 text-decoration-none link-secondary
-        {{ request()->getRequestUri() == '/news/category/business'?'font-colored':'' }}"
+        {{ request()->path() == 'news/category/business'?'font-colored':'' }}"
         href="{{ route('news.category.show', 'business') }}">
             <span class="font-nav">Бизнес</span>
         </a>
 
         <a class="p-2 text-decoration-none link-secondary
-        {{ request()->getRequestUri() == '/news/category/politics'?'font-colored':'' }}"
+        {{ request()->path() == 'news/category/politics'?'font-colored':'' }}"
            href="{{ route('news.category.show', 'politics') }}">
             <span class="font-nav">Политика</span>
         </a>
 
         <a class="p-2 text-decoration-none link-secondary
-        {{ request()->getRequestUri() == '/news/category/sport'?'font-colored':'' }}"
+        {{ request()->path() == 'news/category/sport'?'font-colored':'' }}"
         href="{{ route('news.category.show', 'sport') }}">
             <span class="font-nav">Спорт</span>
         </a>
 
         <a class="p-2 text-decoration-none link-secondary
-        {{ request()->getRequestUri() == '/news/category/culture'?'font-colored':'' }}"
+        {{ request()->path() == 'news/category/culture'?'font-colored':'' }}"
         href="{{ route('news.category.show', 'culture') }}">
            <span class="font-nav">Культура</span>
         </a>

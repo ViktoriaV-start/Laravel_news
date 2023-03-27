@@ -42,7 +42,7 @@ class NewsRequest extends FormRequest
             // здесь exists проверит так: полученное значение 'category_id' должно содержаться в столбце id в таблице categories в БД,
 
 
-            'image' => 'dimensions:min_width=100,min_height=50|mimes:jpeg,bmp,png|max:100000',
+            'image' => 'dimensions:min_width=100,min_height=50|mimes:jpeg,bmp,png|max:1000000',
         ];
     }
 

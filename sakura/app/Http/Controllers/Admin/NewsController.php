@@ -36,7 +36,7 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request, News $news) { // в этот роут можно попасть единственным путем, передав данные через post,
         // поэтому здесь не проверяем
-        // $request->flash(); // метод фиксирует все данные от пользователя (сохраняются в одноразовую сессию),
+ //       $request->flash(); // метод фиксирует все данные от пользователя (сохраняются в одноразовую сессию),
 
         $request->validated();
 
@@ -108,8 +108,10 @@ class NewsController extends Controller
 
         if ($request->hasFile('image')) {
             $service = app(UploadService::class);
-            $validated['image'] = $service->uploadFile($request->file('image')); // путь до файла, который мы загрузим в БД
+            $validated['image'] = 'storage/' . $service->uploadFile($request->file('image')); // путь до файла, который мы загрузим в БД
         }
+
+
 
         $saveStatus = $news->fill($validated)->save();
         if ($saveStatus) {

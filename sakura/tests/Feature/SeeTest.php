@@ -16,16 +16,18 @@ class SeeTest extends TestCase
     {
         $text = 'Новостной сайт Ньюс Лайн';
 
-        $response = $this->get('/');
+        $response = $this->get('https://www.sakura.test.ru');
 
         $response->assertSee($text);
     }
 
     public function test_an_action_that_requires_authentication() // ГОРЖУСЬ!
     {
+//        $user = User::factory()->create();
+
         $user = User::factory()->create();
         $user['isAdmin'] = 1;
-        dump($user['id']);
+
         $text = 'Редактирование профиля';
 
         $response = $this->actingAs($user)

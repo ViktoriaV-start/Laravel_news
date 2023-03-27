@@ -22,8 +22,8 @@ class IndexController extends Controller
 // получение данных в виде JSON
     public function test1(News $news) {
         return response()->json($news->all())
-            ->header('Content-Disposition', 'attachment; filename = "json.txt"') // для скачивания
-            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); // для отображения в браузере
+                         ->header('Content-Disposition', 'attachment; filename = "json.txt"') // для скачивания
+                         ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); // для отображения в браузере
     }
 
 // скачать картинку

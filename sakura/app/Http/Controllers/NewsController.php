@@ -21,14 +21,15 @@ class NewsController extends Controller
     public function show(int $id)
     {
         //$news = DB::select('SELECT * FROM `news` WHERE id = :id', ['id' => $id]);
-//            $news = DB::table('news')->find($id); //getOne($id)
-        $news = News::find($id);
+       //$news = DB::table('news')->find($id); //getOne($id)
+
 //        Log::info('I4445566'); // сделать запись в log
 
 //        return view('news.one', [
 //                'news' => $news
 //            ]);
 
+        $news = News::find($id);
 
         if ($news) {
             return view('news.one', [

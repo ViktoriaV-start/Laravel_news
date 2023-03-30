@@ -35,6 +35,7 @@
             </thead>
             <tbody>
             @forelse($news as $item)
+
                 <tr data-id="{{ $item->id }}">
                     <td>{{ $item->id }}</td>
 

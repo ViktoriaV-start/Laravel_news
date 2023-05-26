@@ -47,10 +47,8 @@ class NewsController extends Controller
 
         $url = null;
         if ($request->file('image')) {
-
             $path = Storage::putFile('public/img', $request->file('image'));
             $url = Storage::url($path);
-
         }
 
         $news->fill($request->all());
@@ -67,8 +65,6 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-
-
         return view('admin.news.edit',[
             'news' => $news,
             'categories' =>  Category::all()
